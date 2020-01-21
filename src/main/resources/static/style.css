@@ -1,0 +1,15 @@
+body {
+    background-color: #1F2041;
+    color: #E5BEED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+  margin: 25%;
+  font-family: 'Averia Sans Libre', cursive;
+  font-size: 500%;
+}
+
+

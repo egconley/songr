@@ -12,4 +12,11 @@ h1 {
   font-size: 500%;
 }
 
+li {
+    list-style: none;
+}
+
+form {
+    display: block;
+}
 

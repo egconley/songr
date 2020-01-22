@@ -8,9 +8,29 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<div th:each="album : ${albums}">
-    <h3 th:text="${album.getTitle()}">albums</h3>
+<div th:each="album : ${albums}" class="albums">
+    <li>
+        <h2 th:text="${album.getTitle()}">album</h2>
+        <h3 th:text="${album.getArtist()}">artist</h3>
+        <img th:src="${album.getimageUrl()}"
+             height="100">
+        <li th:text="${album.getSongCount()}">soung count</li>
+        <li th:text="${album.getlength()}">length</li>
+    </li>
 </div>
-
+<h3>Add Album</h3>
+    <form method="post" action="/Album">
+        <label>Album Title</label>
+        <input name="title" />
+        <label>Artist</label>
+        <input name="artist" />
+        <label>Song Count</label>
+        <input name="songCount" type="number"/>
+        <label>Length</label>
+        <input name="length" type="number"/>
+        <label>Image url</label>
+        <input name="imageUrl" />
+        <input type="submit" />
+    </form>
 </body>
 </html>

@@ -18,6 +18,19 @@
         <li th:text="${album.getlength()}">length</li>
     </li>
 </div>
-
+<h3>Add Album</h3>
+    <form method="post" action="/Album">
+        <label>Album Title</label>
+        <input name="title" />
+        <label>Artist</label>
+        <input name="artist" />
+        <label>Song Count</label>
+        <input name="songCount" type="number"/>
+        <label>Length</label>
+        <input name="length" type="number"/>
+        <label>Image url</label>
+        <input name="imageUrl" />
+        <input type="submit" />
+    </form>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +8,27 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<div th:each="album : ${albums}" class="albums">
     <li>
-        <h2 th:text="${album.getTitle()}">album</h2>
-        <h3 th:text="${album.getArtist()}">artist</h3>
-        <img th:src="${album.getimageUrl()}"
-             height="100">
-        <li th:text="${album.getSongCount()}">soung count</li>
-        <li th:text="${album.getlength()}">length</li>
+        <h2 th:text="${album.title}">album</h2>
+        <h3 th:text="${album.artist}">artist</h3>
+        <li th:text="${album.songCount}">soung count</li>
+        <li th:text="${album.length}">length</li>
+        <img th:src="${album.imageUrl}"
+         height="100">
+<!--        <span th:text="${song : album.song}">-->
+<!--            <li th:text="${song.title}"></li>-->
+<!--        </span>-->
+
     </li>
-</div>
-<h3>Add Album</h3>
-    <form method="post" action="/Album">
-        <label>Album Title</label>
-        <input name="title" />
-        <label>Artist</label>
-        <input name="artist" />
-        <label>Song Count</label>
-        <input name="songCount" type="number"/>
-        <label>Length</label>
-        <input name="length" type="number"/>
-        <label>Image url</label>
-        <input name="imageUrl" />
-        <input type="submit" />
-    </form>
+<h3>Add Song</h3>
+<form method="post" th:action="'/album/'+${album.album_id}+'/songs'">
+    <label>Song Title</label>
+    <input name="title" />
+    <label>Track Number</label>
+    <input name="trackNumber" type="number"/>
+    <label>Length</label>
+    <input name="length" type="number"/>
+    <input type="submit" />
+</form>
 </body>
 </html>

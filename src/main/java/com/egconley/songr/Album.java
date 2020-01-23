@@ -1,25 +1,28 @@
 package com.egconley.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+//    @Column(name = "album_id", unique = true, nullable = false)
+    long album_id;
     String title;
     String artist;
-    int songCount;
+    Integer songCount;
     double length;
     String imageUrl;
 
-    public String getTitle() {
-        return title;
-    }
+    @OneToMany(mappedBy="album")
+    private List<Song> song;
+
+    public long getAlbum_id() { return album_id; }
+
+    public String getTitle() { return title; }
 
     public String getArtist() {
         return artist;
@@ -29,12 +32,16 @@ public class Album {
         return songCount;
     }
 
-    public double getlength() {
+    public double getLength() {
         return length;
     }
 
-    public String getimageUrl() {
+    public String getImageUrl() {
         return imageUrl;
+    }
+
+    public List<Song> getSong() {
+        return song;
     }
 
     public Album() {
@@ -45,12 +52,14 @@ public class Album {
         this.imageUrl = imageUrl;
     }
 
-    public Album(String title, String artist, int songCount, double length, String imageUrl) {
+    public Album(String title, String artist, Integer songCount, double length, String imageUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
         this.length = length;
         this.imageUrl = imageUrl;
     }
+
+
 
 }
